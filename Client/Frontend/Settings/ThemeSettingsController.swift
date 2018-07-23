@@ -119,7 +119,6 @@ class ThemeSettingsController: ThemedTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ThemedTableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.selectionStyle = .none
-
         let section = Section(rawValue: indexPath.section) ?? .automaticOnOff
         switch section {
         case .automaticOnOff:
@@ -131,6 +130,7 @@ class ThemeSettingsController: ThemedTableViewController {
                 cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
 
                 let control = UISwitch()
+                control.accessibilityIdentifier = "DisplaySwitchValue"
                 control.onTintColor = UIColor.theme.tableView.controlTint
                 control.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
                 control.isOn = ThemeManager.instance.automaticBrightnessIsOn
