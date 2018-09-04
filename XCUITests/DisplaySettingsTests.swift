@@ -36,10 +36,16 @@ class DisplaySettingTests: BaseTestCase {
         navigator.performAction(Action.SelectAutomatically)
         waitforExistence(app.tables.cells.staticTexts["Light"])
         XCTAssertTrue(app.tables.cells.staticTexts["Dark"].exists)
+        // Needed so that the change is applied when closing the app for next test
+        navigator.goto(SettingsScreen)
+        app.buttons["Done"].tap()
     }
 
     func testChangeMode() {
         // From XCUI there is now way to check the Mode, but at least we test it can be changed
+        if iPad() {
+        navigator.goto(SettingsScreen)
+        }
         navigator.performAction(Action.SelectDarkMode)
         navigator.goto(SettingsScreen)
         navigator.performAction(Action.SelectLightMode)
