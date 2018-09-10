@@ -17,7 +17,7 @@ class DisplaySettingTests: BaseTestCase {
         XCTAssertTrue(app.tables.cells.staticTexts["Dark"].exists)
     }
 
-    func testChangeAutomaticallySwitch() {
+    func testChangeSwitchAutomatically() {
         navigator.goto(DisplaySettings)
         waitforExistence(app.switches["Automatically, Switch automatically based on screen brightness"])
         navigator.performAction(Action.SelectAutomatically)
